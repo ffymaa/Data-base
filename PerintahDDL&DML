@@ -1,0 +1,231 @@
+Welcome to Termux!
+
+Community forum: https://termux.com/community
+Gitter chat:     https://gitter.im/termux/termux
+IRC channel:     #termux on libera.chat
+
+Working with packages:
+
+ * Search packages:   pkg search <query>
+ * Install a package: pkg install <package>
+ * Upgrade packages:  pkg upgrade
+
+Subscribing to additional repositories:
+
+ * Root:     pkg install root-repo
+ * X11:      pkg install x11-repo
+
+Report issues at https://termux.com/issues
+
+~ $ mysql -u Irdianaa -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.11.4-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database db_databuku_Irdiana;
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [(none)]> use db_databuku_Irdianaa;
+ERROR 1049 (42000): Unknown database 'db_databuku_Irdianaa'
+MariaDB [(none)]> use db_databuku_irdiana;
+ERROR 1049 (42000): Unknown database 'db_databuku_irdiana'
+MariaDB [(none)]> use db_databuku_Irdiana;
+Database changed
+MariaDB [db_databuku_Irdiana]> create table buku(
+    -> kode_buku varchar (5) not null,
+    -> nama_buku varchar (15) not null,
+    -> nomor_isbn integer (10) not null,
+    -> penerbit varchar (15) not null,
+    -> tahun_terbit date not null,
+    -> penulis varchar (15) not null,
+    -> stok integer (29) not null,
+    -> PRIMARY KEY (kode_buku)
+    -> );
+Query OK, 0 rows affected (0.106 sec)
+
+    -> ;                                                                                ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1        MariaDB [db_databuku_Irdiana]> insert into data_buku(kode_buku,nama_buku,nomor_isbn,penerbit,tahun_terbit,penulis,stok)values
+    -> ("boo1","goosebumps",9798765,"granmedia","2002-2-23","R.L Steine",100);
+ERROR 1146 (42S02): Table 'db_databuku_Irdiana.data_buku' doesn't exist
+MariaDB [db_databuku_Irdiana]> insert into tokobuku(kode_buku,nama_buku,nomor_isbn,pener    -> insert into tokobuku(kode_buku,nama_buku,nomor_isbn,penerbit,tahun_terbit,penulis,stok)values
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'insert into tokobuku(kode_buku,nama_buku,nomor_isbn,penerbit,tahun_terbit,pen...' at line 2
+MariaDB [db_databuku_Irdiana]> insert into tokobuku(kode_buku,nama_buku,nomor_isbn,pener    -> .
+   -> ;
+        ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.' at line 2
+MariaDB [db_databuku_Irdiana]> insert into tokobuku(kode_buku,nama_buku,nomor_isbn,penerbit,tahun_terbit,penulis,stok)values
+    -> ("boo1","Baby Shark",9798765,"Gramedia","2022-2-22","Kurona Ranze",100);
+ERROR 1146 (42S02): Table 'db_databuku_Irdiana.tokobuku' doesn't exist
+MariaDB [db_databuku_Irdiana]> insert into buku(kode_buku,nama_buku,nomor_isbn,penerbit,tahun_terbit,penulis,stok)values
+    -> ("boo1","Baby Shark",9798765,"Gramedia","2022-2-22","Kurona Ranze",100);
+Query OK, 1 row affected (0.104 sec)
+
+MariaDB [db_databuku_Irdiana]> insert into buku(kode_buku,nama_buku,nomor_isbn,penerbit,tahun_terbit,    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [db_databuku_Irdiana]> insert into buku(kode_buku,nama_buku,nomor_isbn,penerbit,tahun_terbit,penulis,stok)values
+    -> ("boo2","Gamers",9798753,"Erlangga","2023-6-5","Seishiro Nagi",100);
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [db_databuku_Irdiana]> select * from buku;;
++-----------+------------+------------+----------+--------------+---------------+------+
+| kode_buku | nama_buku  | nomor_isbn | penerbit | tahun_terbit | penulis       | stok |
++-----------+------------+------------+----------+--------------+---------------+------+
+| boo1      | Baby Shark |    9798765 | Gramedia | 2022-02-22   | Kurona Ranze  |  100 |
+| boo2      | Gamers     |    9798753 | Erlangga | 2023-06-05   | Seishiro Nagi |  100 |
++-----------+------------+------------+----------+--------------+---------------+------+
+2 rows in set (0.020 sec)
+
+MariaDB [db_databuku_Irdiana]> create table distributor(
+    -> id_distributor int (15),
+    -> nama_distributor varchar (25),
+    -> no_telp int (20),
+    -> alamat varchar (30),
+    -> PRIMARY KEY (id_distributor)
+    -> );
+Query OK, 0 rows affected (0.040 sec)
+
+MariaDB [db_databuku_Irdiana]>  insert into distributor(id_distributor,nama_distributor,no_telp,alamat) values
+    -> (0020,"Itoshi Rin",0895332360,"Bandung");
+Query OK, 1 row affected (0.023 sec)
+
+MariaDB [db_databuku_Irdiana]> insert into distributor(id_distributor,nama_distributor,no_telp,alamat) values
+    -> (0021,"Itoshi Sae",085477712,"Jakarta");
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [db_databuku_Irdiana]> select * from distributor;
++----------------+------------------+-----------+---------+
+| id_distributor | nama_distributor | no_telp   | alamat  |
++----------------+------------------+-----------+---------+
+|             20 | Itoshi Rin       | 895332360 | Bandung |
+|             21 | Itoshi Sae       |  85477712 | Jakarta |
++----------------+------------------+-----------+---------+
+2 rows in set (0.007 sec)
+
+MariaDB [db_databuku_Irdiana]> create table pembelian(
+    -> id_order int(11),
+    -> id_barang int(11),
+    -> id_pembeli int(11),
+    -> tanggal date,
+    -> PRIMARY KEY (id_order)
+    -> );
+Query OK, 0 rows affected (0.022 sec)
+
+MariaDB [db_databuku_Irdiana]> insert into pembelian(id_order,id_barang,id_pembeli,tanggal) values
+    -> (1234,4321,111213,"2012-01-11");
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [db_databuku_Irdiana]> insert into pembelian(id_order,id_barang,id_pembeli,tanggal) values
+    -> (5678,8765,556677,"2017-05-16");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [db_databuku_Irdiana]> select * from pembelian;
++----------+-----------+------------+------------+
+| id_order | id_barang | id_pembeli | tanggal    |
++----------+-----------+------------+------------+
+|     1234 |      4321 |     111213 | 2012-01-11 |
+|     5678 |      8765 |     556677 | 2017-05-16 |
++----------+-----------+------------+------------+
+2 rows in set (0.001 sec)
+
+MariaDB [db_databuku_Irdiana]> create table pelanggan(
+    -> id_pelanggan int(11),
+    -> nama_pembeli varchar(30),
+    -> no_telp char(14),
+    -> alamat varchar(15),
+    -> PRIMARY KEY (id_pelanggan)
+    -> );
+Query OK, 0 rows affected (0.022 sec)
+
+MariaDB [db_databuku_Irdiana]> insert into pelanggan(id_pelanggan,nama_pembeli,no_telp,alamat) values
+    -> (12345,"Reo Mikage",0814141414,"Jepang")
+    -> (56789,"Kaiser Michael",0810101010,"Jerman")
+    -> (91011,"Chigiri Hyoma",0804040404,"Jepang");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(56789,"Kaiser Michael",0810101010,"Jerman")
+(91011,"Chigiri Hyoma",080404040...' at line 3
+MariaDB [db_databuku_Irdiana]> insert into pelanggan(id_pelanggan,nama_pembeli,no_telp,alamat) values
+    -> (12345,"Reo Mikage",0814141414,"Jepang")
+    -> (56789,"Kaiser Michael",0810101010,"Jerman")
+    -> (91011,"Chigiri Hyoma",0804040404,"Jepang");;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(56789,"Kaiser Michael",0810101010,"Jerman")
+(91011,"Chigiri Hyoma",080404040...' at line 3
+ERROR: No query specified
+
+MariaDB [db_databuku_Irdiana]> insert into pelanggan(id_pelanggan,nama_pembeli,no_telp,alamat) values
+    -> (12345,"Reo Mikage",0814141414,"Jepang")
+    -> (56789,"Kaiser Michael",0810101010,"Jerman");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(56789,"Kaiser Michael",0810101010,"Jerman")' at line 3
+MariaDB [db_databuku_Irdiana]> insert into pelanggan(id_pelanggan,nama_pembeli,no_telp,alamat) values
+    -> (12345,"Reo Mikage",0814141414,"Jepang"),
+    -> (56789,"Kaiser Michael",0810101010,"Jerman"),
+    -> (91011,"Chigiri Hyoma",0804040404,"Jepang");
+Query OK, 3 rows affected (0.100 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [db_databuku_Irdiana]> select * from pelanggan;
++--------------+----------------+-----------+--------+
+| id_pelanggan | nama_pembeli   | no_telp   | alamat |
++--------------+----------------+-----------+--------+
+|        12345 | Reo Mikage     | 814141414 | Jepang |
+|        56789 | Kaiser Michael | 810101010 | Jerman |
+|        91011 | Chigiri Hyoma  | 804040404 | Jepang |
++--------------+----------------+-----------+--------+
+3 rows in set (0.014 sec)
+
+MariaDB [db_databuku_Irdiana]> create table penjualan(
+    -> id_order int,
+    -> id_barang int,
+    -> harga int,
+    -> jumlah int,
+    -> PRIMARY KEY (id_order)
+    -> );
+Query OK, 0 rows affected (0.036 sec)
+
+MariaDB [db_databuku_Irdiana]> insert into penjualan(id_order,id_barang,harga,jumlah) values
+    -> (6017,15056,1700000,3),
+    -> (6018,15057,5500000,1);
+Query OK, 2 rows affected (0.005 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [db_databuku_Irdiana]> update penjualan set id_barang = '14414' where id_order =Query OK, 1 row affected (0.011 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [db_databuku_Irdiana]> select * from penjualan;
++----------+-----------+---------+--------+
+| id_order | id_barang | harga   | jumlah |
++----------+-----------+---------+--------+
+|     6017 |     14414 | 1700000 |      3 |
+|     6018 |     15057 | 5500000 |      1 |
++----------+-----------+---------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [db_databuku_Irdiana]> insert into penjualan(id_order,id_barang,harga,jumlah) values
+    -> (6017,15056,1700000,3),
+    -> (6018,15057,5500000,1);
+ERROR 1062 (23000): Duplicate entry '6017' for key 'PRIMARY'
+MariaDB [db_databuku_Irdiana]> select * from penjualan;
++----------+-----------+---------+--------+
+| id_order | id_barang | harga   | jumlah |
++----------+-----------+---------+--------+
+|     6017 |     14414 | 1700000 |      3 |
+|     6018 |     15057 | 5500000 |      1 |
++----------+-----------+---------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [db_databuku_Irdiana]> update penjualan set id_barang = '15056' where id_order = '6017';
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [db_databuku_Irdiana]> select * from penjualan;
++----------+-----------+---------+--------+
+| id_order | id_barang | harga   | jumlah |
++----------+-----------+---------+--------+
+|     6017 |     15056 | 1700000 |      3 |
+|     6018 |     15057 | 5500000 |      1 |
++----------+-----------+---------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [db_databuku_Irdiana]>
